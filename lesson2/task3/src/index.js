@@ -16,7 +16,7 @@ const textColor = seconds % 2 === 0
 : '#fff';
 
 const styles ={
-  color = textColor,
+  color: textColor,
   backgroundColor
 };
 
