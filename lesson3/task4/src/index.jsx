@@ -9,5 +9,5 @@ const rootElement = document.querySelector("#root");
 ReactDOM.render(<Greeting 
     firstName="Tom"
     lastName="Doe"
-    birthDate= {new Date('2000-01-01T11:11:11.819Z')}
+    birthDate= {new Date(2019,11,31)}
     />, rootElement);
