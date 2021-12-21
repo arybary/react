@@ -1,6 +1,6 @@
 import React from "react";
 import "./userinfo.scss";
-import Avatar from "./Avatar";
+import Avatar from './Avatar';
 
 const UserInfo = (props) => {
   return (
