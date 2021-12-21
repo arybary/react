@@ -2,7 +2,7 @@ import React from "react";
 import "./userinfo.scss";
 import Avatar from './Avatar';
 
-export default (props) => {
+const UserInfo = (props) => {
   return (
     <div className="user-info">
       <Avatar avatarUrl={props.user.avatarUrl} name={props.user.name} /> {}
@@ -10,4 +10,4 @@ export default (props) => {
     </div>
   );
 };
-
+export default UserInfo;
