@@ -1,7 +1,8 @@
 import React from "react";
 import "./userinfo.scss";
 import Avatar from "./Avatar.jsx";
-const UserInfo = (props) => {
+
+export default (props) => {
   return (
     <div className="user-info">
       <Avatar avatarUrl={props.user.avatarUrl} name={props.user.name} /> {}
@@ -9,4 +10,4 @@ const UserInfo = (props) => {
     </div>
   );
 };
-export default UserInfo;
+
