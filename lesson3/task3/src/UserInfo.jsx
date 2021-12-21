@@ -10,4 +10,5 @@ const UserInfo = (props) => {
     </div>
   );
 };
+
 export default UserInfo;
