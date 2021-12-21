@@ -1,7 +1,7 @@
 import React from "react";
-import "./avatar.scss";
+import "./avatarst.scss";
 
-const Avatar = (props) => {
+const UserAvatar = (props) => {
   return <img className="avatar" src={props.avatarUrl} alt={props.name} />;
 };
-export default Avatar;
+export default UserAvatar;
