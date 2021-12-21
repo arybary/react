@@ -1,6 +1,6 @@
 import React from "react";
 import "./userinfo.scss";
-import Avatar from "./Avatar.jsx";
+import Avatar from './Avatar';
 
 export default (props) => {
   return (
