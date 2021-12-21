@@ -1,7 +1,7 @@
 import React from "react";
 
 
-export default (props) => {
+export const Search=(props) => {
   
     return (
       <div className="search">
