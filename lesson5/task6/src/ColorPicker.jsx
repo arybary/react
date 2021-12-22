@@ -14,14 +14,17 @@ class ColorPicker extends Component {
           <button
             className="picker__button picker__button_coral"
             onMouseEnter={() => this.setBodyColor("Coral")}
+            onMouseLeave={() => this.setBodyColor("")}
           ></button>
           <button
             className="picker__button picker__button_aqua"
             onMouseEnter={() => this.setBodyColor("Aqua")}
+            onMouseLeave={() => this.setBodyColor("")}
           ></button>
           <button
             className="picker__button picker__button_bisque"
             onMouseEnter={() => this.setBodyColor("Bisque")}
+            onMouseLeave={() => this.setBodyColor("")}
           ></button>
         </div>
       </div>
