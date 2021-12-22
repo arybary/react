@@ -29,7 +29,7 @@ class Clock extends Component {
         <div className="clock__location">{this.state.location}</div>
         <div className="clock__time">{`${moment(
           getTimeWithOffset(this.state.time)
-        ).format("h:mm:ss a")}`}</div>
+        ).format("h:mm:ss A")}`}</div>
       </div>
     );
   }
