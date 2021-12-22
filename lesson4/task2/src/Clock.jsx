@@ -5,9 +5,10 @@ import "./clock.scss";
 const getTimeWithOffset = (offset) => {
   const currentTime = new Date();
   const utcOffset = currentTime.getTimezoneOffset() / 60;
-  return new Date(
+  const date = new Date(
     currentTime.setHours(currentTime.getHours() + offset + utcOffset)
   );
+  return moment(date).format("h:mm:ss A");
 };
 
 class Clock extends Component {
@@ -27,9 +28,9 @@ class Clock extends Component {
     return (
       <div className="clock">
         <div className="clock__location">{this.state.location}</div>
-        <div className="clock__time">{`${moment(
-          getTimeWithOffset(this.state.time)
-        ).format("h:mm:ss A")}`}</div>
+        <div className="clock__time">
+          {`${getTimeWithOffset(this.state.time)}`}
+        </div>
       </div>
     );
   }
