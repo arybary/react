@@ -16,7 +16,7 @@ class Toggler extends Component {
 
   render() {
     return (
-      <button className='counter__button' onClick={()=>this.onButton()}>
+      <button className='counter__button' onClick={this.onButton}>
         {this.state.active ? 'On' : 'Off'}
       </button>
     );
