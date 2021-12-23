@@ -1,8 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 
 const NumbersList = ({ numbers }) => {
-  const numberElement = numbers.map((num) => <li>{num}</li>);
-  return <ul>{numberElement}</ul>;
+  return (
+    <ul>
+      {numbers.map((num, i) => (
+        <li key={i}>{num}</li>
+      ))}
+    </ul>
+  );
 };
 
 export default NumbersList;
