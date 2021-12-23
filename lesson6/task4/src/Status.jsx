@@ -3,26 +3,8 @@ import React, { Component } from "react";
 import Offline from "./Offline.jsx";
 import Online from "./Online.jsx";
 
-class Auth extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOnline: true,
-    };
-  }
+const Status = ({ isOnline }) => {
+  return <div class="status">{isOnline ? <Online /> : <Offline />}</div>;
+};
 
-  render() {
-    return (
-      <div class="status">
-        {this.state.isOnline ? (
-          <Online  />
-        ) : (
-          <Offline />
-        )}
- 
-      </div>
-    );
-  }
-}
-
-export default Auth;
+export default Status;
