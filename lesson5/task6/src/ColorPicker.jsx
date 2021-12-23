@@ -9,7 +9,8 @@ class ColorPicker extends Component {
   render() {
     return (
       <div>
-        <div className="picker__title"></div>
+        <div className="picker__title"> Red
+  </div>
         <div>
           <button
             className="picker__button picker__button_coral"
