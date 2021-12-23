@@ -9,9 +9,10 @@ class ColorPicker extends Component {
   render() {
     return (
       <div>
-        <div className="picker__title"> Red
-  </div>
-        <div>
+      <div class="picker__title">
+        Red
+      </div>
+      <div>
           <button
             className="picker__button picker__button_coral"
             onMouseEnter={() => this.setBodyColor("Coral")}
