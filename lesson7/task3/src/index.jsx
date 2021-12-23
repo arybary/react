@@ -33,4 +33,4 @@ const transactions = [
 ];
 
 
-ReactDOM.render(<TransactionsList users={transactions}/>, rootElement);
+ReactDOM.render(<TransactionsList transactions={transactions}/>, rootElement);
