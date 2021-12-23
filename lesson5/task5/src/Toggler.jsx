@@ -9,14 +9,14 @@ class Toggler extends Component {
   }
 
   onButton = () => {
-    !this.state.active
-      ? this.setState({ active: true })
-      : this.setState({ active: false });
+    this.setState({
+      active: !this.state.active,
+    });
   };
 
   render() {
     return (
-      <button className='counter__button' onClick={this.onButton}>
+      <button className='counter__button' onClick={()=>this.onButton()}>
         {this.state.active ? 'On' : 'Off'}
       </button>
     );
