@@ -13,12 +13,14 @@ class ColorPicker extends Component {
       activeColor: name,
     });
   };
-  clearTitle = () => this.setTitle(null);
+  clearTitle = () => this.setTitle(null); 
   render() {
     return (
       <div>
-        <div class="picker__title">{this.state.color}</div>
-        <div>
+      <div className="picker__title">
+       {this.state.activeColor}
+      </div>
+      <div>
           <button
             className="picker__button picker__button_coral"
             onMouseEnter={() => this.setTitle("Coral")}
