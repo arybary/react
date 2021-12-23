@@ -1,16 +1,23 @@
 import React, { Component } from "react";
 
 class ColorPicker extends Component {
-  setNameColor = (color) => {
-    const enterElem = document.querySelector(".picker__title");
-    enterElem.textContent = color;
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      color: '',
+    };
+  }
 
+  setNameColor = (name) => {
+    this.setState({
+      color: name,
+    });
+  };
   render() {
     return (
       <div>
       <div class="picker__title">
-        Red
+       {this.state.color}
       </div>
       <div>
           <button
