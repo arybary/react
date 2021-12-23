@@ -8,9 +8,8 @@ class Toggler extends Component {
     };
   }
 
-  onButton = (e) => {
-    const click = e.target.textContent === 'Off';
-    click
+  onButton = () => {
+    !this.state.active
       ? this.setState({ active: true })
       : this.setState({ active: false });
   };
