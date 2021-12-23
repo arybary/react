@@ -28,7 +28,7 @@ class Auth extends Component {
         ) : (
           <>
             <Spinner size={50} />
-            <Logout onLogout={this.onLogout} />{" "}
+            <Logout onLogout={this.onLogout} />
           </>
         )}
       </div>
