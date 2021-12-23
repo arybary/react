@@ -3,7 +3,7 @@ import UserGreeting from "./UserGreeting.jsx";
 import GuestGreeting from "./GuestGreeting.jsx";
 
 const Greeting = ({ isLoggedIn }) => {
-  if (isLoggedIn) {
+  if (!isLoggedIn) {
     return <UserGreeting />;
   }
   return <GuestGreeting />;
