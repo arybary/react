@@ -12,23 +12,22 @@ class ConnectionStatus extends Component {
 
   onOffline = () => {
     this.setState({ status: "offline" });
-    this.onRedLine(this.state.status);
+   
   };
   onOnline = () => {
     this.setState({ status: "online" });
-    this.onRedLine(this.state.status);
+    
   };
-  onRedLine = (stat) =>
-    stat === "offline"
-      ? document.querySelector(".status").classList.add("status_offline")
-      : document.querySelector(".status").classList.remove("status_offline");
+  
 
   componentWillUnmount() {
     window.removeEventListener("offline", this.onOffline);
     window.removeEventListener("online", this.onOnline);
   }
-  render() {
-    return (<div className="status">{this.state.status}</div>);
+  render() {let statusLine ="online"
+    if(this.state.status==="offline"){statusLine="status status_offline"} else {statusLine="status"}
+    
+    return (<div className={statusLine}>{this.state.status}</div>);
   }
 }
 
