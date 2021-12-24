@@ -6,29 +6,31 @@ class Life extends Component {
     console.log("constructor: good place to create state");
   }
 
+  componentDidMount() {
+    console.log("componentDidMount: API calls, subscriptions");
+   
+  }
   shouldComponentUpdate() {
     console.log(
       "shouldComponentUpdate(nextProps, nextState): decide to render or not to render"
     );
+    return true
   }
 
-
-  componentDidMount() {
-    console.log("componentDidMount: API calls, subscriptions");
-  }
+  componentDidUpdate() {
+    console.log(
+      "componentDidUpdate(prevProps, prevState): some updates based on new props"
+    );}
   componentWillUnmount() {
     console.log(
       "componentWillUnmount(): cleanup before DOM related to component will be removed"
     );
   }
-  componentDidUpdate() {
-    console.log(
-      "componentDidUpdate(prevProps, prevState): some updates based on new props"
-    );
-  }
+  
+  
   render() {
     console.log("return React element to build DOM");
-    return <div>{this.props.name}</div>;
+    return <div>{this.props.number}</div>;
   }
 }
 
