@@ -13,14 +13,12 @@ class ConnectionStatus extends Component {
   onOffline = (e) => {
     this.setState({ status: "offline" });
     e.target.document.querySelector(".status").classList.add("status_offline");
-    console.log(e.target.document.querySelector(".status"));
   };
   onOnline = (e) => {
     this.setState({ status: "online" });
     e.target.document
       .querySelector(".status")
       .classList.remove("status_offline");
-    console.log(e.target.document.querySelector(".status"));
   };
 
   componentWillUnmount() {
