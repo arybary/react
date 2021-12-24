@@ -21,8 +21,10 @@ class ConnectionStatus extends Component {
     window.removeEventListener("offline", this.onOffline);
     window.removeEventListener("online", this.onOnline);
   }
-  statusLine = (state) =>
-    state === "offline" ? "status status_offline" : "status";
+  statusLine = (state) => {
+    const line = state === "offline" ? "status status_offline" : "status";
+    return line;
+  };
   render() {
     return (
       <div className={this.statusLine(this.state.status)}>
