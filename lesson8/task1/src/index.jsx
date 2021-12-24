@@ -6,4 +6,4 @@ import Life from "./Life.jsx";
 const rootElement = document.querySelector("#root");
 
 
-ReactDOM.render(<Life />, rootElement);
+ReactDOM.render(<Life name='alewa' />, rootElement);
