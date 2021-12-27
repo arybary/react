@@ -11,7 +11,8 @@ class Search extends Component {
     });
   };
 
-  search=()=>{
+  search=(event)=>{
+    event.preventDefault()
     alert(`Search text: ${this.state.value}`)
   }
 
@@ -24,7 +25,7 @@ class Search extends Component {
           value={this.state.value}
           className="search__input"
         />
-        <button className="search__button">Search</button>
+        <button className="search__button" type="submit" >Search</button>
       </form>
     );
   }
