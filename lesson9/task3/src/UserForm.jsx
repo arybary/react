@@ -15,11 +15,7 @@ class UserForm extends Component {
 
   render() {
     return (
-      <form
-        ref={this.setRef}
-        className="login-form"
-        onSubmit={this.onSubmit}
-      >
+      <form ref={this.setRef} className="login-form" onSubmit={this.onSubmit}>
         <h1 className="form-title">Profile</h1>
         <div className="form-control">
           <label className="form-label" htmlFor="name">
