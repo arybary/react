@@ -26,7 +26,7 @@ onSubmit=e=>this.props.createUser(this.state,e)
       >
         <h1 className="form-title">Profile</h1>
         <div className="form-control">
-          <label className="form-label" for="name">
+          <label className="form-label" htmlFor="name">
             Name
           </label>
           <input
@@ -39,7 +39,7 @@ onSubmit=e=>this.props.createUser(this.state,e)
           />
         </div>
         <div className="form-control">
-          <label className="form-label" for="student">
+          <label className="form-label" htmlFor="student">
             Student
           </label>
           <input
@@ -52,7 +52,7 @@ onSubmit=e=>this.props.createUser(this.state,e)
           />
         </div>
         <div className="form-control">
-          <label className="form-label" id="occupation" for="occupation">
+          <label className="form-label" id="occupation" htmlFor="occupation">
             Occupation
           </label>
           <select
@@ -68,7 +68,7 @@ onSubmit=e=>this.props.createUser(this.state,e)
           </select>
         </div>
         <div className="form-control">
-          <label className="form-label" id="about" for="about">
+          <label className="form-label" id="about" htmlFor="about">
             About
           </label>
           <textarea
