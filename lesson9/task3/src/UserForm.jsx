@@ -1,26 +1,22 @@
 import React, { Component } from "react";
 
 class UserForm extends Component {
-  state = {
-    name: "",
-    student: false,
-    occupation: "London",
-    about: "",
+  onSubmit = (e) => {
+    e.preventDefault();
+    const formDate = [...new FormData(this.formRef)].reduce(
+      (acc, [name, value]) => ({ ...acc, [name]: value }),
+      {}
+    );
+    this.props.createUser(formDate);
+  };
+  setRef = (node) => {
+    this.formRef = node;
   };
 
-  handleChange = (e) => {
-    const { name, value, checked, type } = e.target;
-
-    const val = type === "checkbox" ? checked : value;
-    this.setState({
-      [name]: val,
-    });
-  };
-onSubmit=e=>this.props.createUser(this.state,e)
- 
   render() {
     return (
       <form
+        ref={this.setRef}
         className="login-form"
         onSubmit={this.onSubmit}
       >
@@ -29,14 +25,7 @@ onSubmit=e=>this.props.createUser(this.state,e)
           <label className="form-label" htmlFor="name">
             Name
           </label>
-          <input
-            className="form-input"
-            onChange={this.handleChange}
-            type="text"
-            id="name"
-            name="name"
-            value={this.state.name}
-          />
+          <input className="form-input" type="text" id="name" name="name" />
         </div>
         <div className="form-control">
           <label className="form-label" htmlFor="student">
@@ -44,39 +33,27 @@ onSubmit=e=>this.props.createUser(this.state,e)
           </label>
           <input
             className="form-input"
-            onChange={this.handleChange}
             type="checkbox"
             id="student"
             name="student"
-            value={this.state.student}
           />
         </div>
         <div className="form-control">
           <label className="form-label" id="occupation" htmlFor="occupation">
             Occupation
           </label>
-          <select
-            name="occupation"
-            onChange={this.handleChange}
-            className="form-input"
-            value={this.state.occupation}
-          >
-            <option value="london">London</option>
-            <option value="new-york">New York</option>
-            <option value="coconut">Sidney</option>
-            <option value="mango">Berlin</option>
+          <select name="occupation" className="form-input">
+            <option value="London">London</option>
+            <option value="New York">New York</option>
+            <option value="Sidney">Sidney</option>
+            <option value="Berlin">Berlin</option>
           </select>
         </div>
         <div className="form-control">
           <label className="form-label" id="about" htmlFor="about">
             About
           </label>
-          <textarea
-            name="about"
-            className="form-input"
-            onChange={this.handleChange}
-            value={this.state.about}
-          ></textarea>
+          <textarea name="about" className="form-input"></textarea>
         </div>
         <button className="submit-button" type="submit">
           Submit

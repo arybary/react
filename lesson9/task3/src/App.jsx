@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import UserForm from "./UserForm";
 
 class App extends Component {
-
-  createUser = (obj,e) => {
-    e.preventDefault();
+  createUser = (obj) => {
     console.log(obj);
   };
 
