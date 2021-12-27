@@ -2,10 +2,10 @@ import React, { Component } from "react";
 
 class UserForm extends Component {
   state = {
-    name: this.props.name,
-    student: this.props.student,
-    occupation: this.props.occupation,
-    about: this.props.about,
+    name: "",
+    student: false,
+    occupation: "London",
+    about: "",
   };
 
   handleChange = (e) => {
@@ -16,14 +16,16 @@ class UserForm extends Component {
       [name]: val,
     });
   };
-  onSubmit = (e) => {
-    e.preventDefault();
-    
-  };
 
   render() {
     return (
-      <form className="login-form" onSubmit={this.onSubmit}>
+      <form
+        className="login-form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          this.props.createUser(this.state);
+        }}
+      >
         <h1 className="form-title">Profile</h1>
         <div className="form-control">
           <label className="form-label" for="name">

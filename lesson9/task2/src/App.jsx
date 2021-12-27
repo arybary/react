@@ -8,12 +8,7 @@ class App extends Component {
   };
 
   render() {
-    return <UserForm {...this.createUser({
-      name: "sfsg",
-      student: true,
-      occupation: "London",
-      about: "vxv",
-    })}/>;
+    return <UserForm createUser={this.createUser} />;
   }
 }
 
