@@ -17,15 +17,12 @@ class UserForm extends Component {
     });
   };
 
-  onSubmit=e=>{e.preventDefault()
-    this.props.createUser(this.state);
-  }
-
+ 
   render() {
     return (
       <form
         className="login-form"
-        onSubmit={this.onSubmit
+        onSubmit={e=>this.props.createUser(this.state,e)
         }
       >
         <h1 className="form-title">Profile</h1>
