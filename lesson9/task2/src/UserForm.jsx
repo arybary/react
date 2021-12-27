@@ -62,10 +62,10 @@ class UserForm extends Component {
             className="form-input"
             value={this.state.occupation}
           >
-            <option value="london">London</option>
-            <option value="new-york">New York</option>
-            <option value="coconut">Sidney</option>
-            <option value="mango">Berlin</option>
+            <option value="London">London</option>
+            <option value="New York">New York</option>
+            <option value="Sidney">Sidney</option>
+            <option value="Berlin">Berlin</option>
           </select>
         </div>
         <div className="form-control">
