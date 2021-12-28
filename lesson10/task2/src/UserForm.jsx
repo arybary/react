@@ -1,11 +1,12 @@
 import React from "react";
 
 
-const UserForm = (props) => {
+const UserForm = ({userData,onChange}) => {
+  
   return (  
     <form className="user-form">
-      <input type="text" name="firstName" className="user-form__input" value={props.userData.firstName} onChange={props.onChange}/>
-      <input type="text" name="lastName" className="user-form__input" value={props.userData.lastName} onChange={props.onChange}/>
+      <input type="text" name="firstName" className="user-form__input" value={userData.firstName} onChange={onChange}/>
+      <input type="text" name="lastName" className="user-form__input" value={userData.lastName} onChange={onChange}/>
     </form>
  
   );

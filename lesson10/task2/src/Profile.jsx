@@ -2,10 +2,10 @@ import React from "react";
 import UserForm from "./UserForm";
 
 
-const Profile = (props) => {
+const Profile = ({userData,onChange}) => {
   return (
     <div className="column">
-    <UserForm userData={props.userData} onChange={props.onChange}/>
+    <UserForm userData={userData} onChange={onChange}/>
   </div>
   );
 };
