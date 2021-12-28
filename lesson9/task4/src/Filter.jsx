@@ -1,18 +1,7 @@
 import React, { Component } from "react";
 
 class Filter extends Component {
-  state = {
-    filterText: this.props.filterText,
-  };
 
-  onChange = (e) => {
-    e.preventDefault();
-
-    this.setState({
-      filterText: e.target.value
-    });
-    this.props.onChange(this.state.filterText);
-  };
 
   render() {
     return (
@@ -21,8 +10,8 @@ class Filter extends Component {
         <input
           type="text"
           className="filter__input"
-          onChange={this.onChange}
-          value={this.state.filterText}
+          onChange={this.props.onChange}
+          value={this.props.filterText}
         />
       </div>
     );
