@@ -4,12 +4,30 @@ import Filter from "./Filter.jsx";
 
 class UsersList extends Component {
   state = {
-    users: this.props.users,
+    filterText: ""
   };
+  updateData = (value) => {
+    this.setState({ filterText: value});
+  };
+
   render() {
+    console.log(this.state.filterText);
+    let newList;
+    newList =
+      this.state.filterText===''
+        ? this.props.users
+        : this.props.users.filter(
+            (user) => user.name === this.state.filterText
+          );
+
     return (
       <div>
-        <Filter users={this.state.users} />;
+        <Filter updateData={this.updateData} count={newList.length}/>
+        <ul className="users">
+          {newList.map((user) => (
+            <User key={user.id} {...user} />
+          ))}
+        </ul>
       </div>
     );
   }
