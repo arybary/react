@@ -5,7 +5,7 @@ class Filter extends Component {
     filterText: "",
   };
 
-  onChange = (e) => {
+  onFilterChange = (e) => {
     e.preventDefault();
 
     this.setState({
@@ -21,7 +21,7 @@ class Filter extends Component {
         <input
           type="text"
           className="filter__input"
-          onChange={this.onChange}
+          onChange={this.onFilterChange}
           value={this.state.filterText}
         />
       </div>

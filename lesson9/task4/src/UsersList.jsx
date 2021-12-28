@@ -4,27 +4,25 @@ import Filter from "./Filter.jsx";
 
 class UsersList extends Component {
   state = {
-    users: this.props.users   
+    users: this.props.users,
   };
 
-
   updateData = (value) => {
-    this.setState({ filterText: value});
+    this.setState({ filterText: value });
   };
 
   render() {
     console.log(this.state.filterText);
     let newList;
-    newList =
-      !this.state.filterText
-        ? this.props.users
-        : this.props.users.filter(
-            (user) => user.name.toUpperCase().includes(this.state.filterText.toUpperCase())
-          );
+    newList = !this.state.filterText
+      ? this.props.users
+      : this.props.users.filter((user) =>
+          user.name.toUpperCase().includes(this.state.filterText.toUpperCase())
+        );
 
     return (
       <div>
-        <Filter onChange={this.updateData} count={newList.length}/>
+        <Filter onChange={this.updateData} count={newList.length} />
         <ul className="users">
           {newList.map((user) => (
             <User key={user.id} {...user} />
