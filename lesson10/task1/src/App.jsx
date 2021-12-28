@@ -4,7 +4,7 @@ import UserProfile from "./UserProfile";
 
 class App extends Component {
   state = {
-    user: null,
+    userData: null,
   };
   componentDidMount() {
     this.fetchUser(this.props.userId);
@@ -14,22 +14,23 @@ class App extends Component {
       .then((response) => response.json())
       .then((data) =>
         this.setState({
-          user: data,
+          userData: data,
         })
       );
   };
   render() {
-    const { user } = this.state;
-    if (!user) {
+   
+    console.log(this.state.userData)
+    if (!this.state.userData) {
       return null;
     }
 
     return (
       <div className="page">
         <header className="header">
-          <UserMenu {...user} />
+          <UserMenu userData={this.state.userData} />
         </header>
-        <UserProfile {...user} />
+        <UserProfile userData={this.state.userData} />
       </div>
     );
   }

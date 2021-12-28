@@ -1,15 +1,15 @@
 import React from "react";
 
 
-const UserMenu = ({ name, location, avatar_url}) => {
+const UserMenu = (props) => {
   return (
     <div className="menu">
         <span className="menu__greeting">
-         {`Hello, ${name}`}
+         {`Hello, ${props.userData.name}`}
         </span>
         <img
           alt="User Avatar"
-          src={avatar_url}
+          src={props.userData.avatar_url}
           className="menu__avatar"
         />
       </div>
