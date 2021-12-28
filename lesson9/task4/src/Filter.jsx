@@ -11,7 +11,7 @@ class Filter extends Component {
     this.setState({
       filterText: e.target.value,
     });
-    this.props.updateData(this.state.filterText);
+    this.props.onChange(this.state.filterText);
   };
 
   render() {
