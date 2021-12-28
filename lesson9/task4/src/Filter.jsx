@@ -9,7 +9,7 @@ class Filter extends Component {
     e.preventDefault();
 
     this.setState({
-      filterText: e.target.value.toUpperCase(),
+      filterText: e.target.value
     });
     this.props.onChange(this.state.filterText);
   };

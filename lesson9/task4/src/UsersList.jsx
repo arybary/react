@@ -19,7 +19,7 @@ class UsersList extends Component {
       !this.state.filterText
         ? this.props.users
         : this.props.users.filter(
-            (user) => user.name.toUpperCase().includes(this.state.filterText)
+            (user) => user.name.toUpperCase().includes(this.state.filterText.toUpperCase())
           );
 
     return (
