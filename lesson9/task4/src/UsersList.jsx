@@ -5,16 +5,15 @@ import Filter from "./Filter.jsx";
 class UsersList extends Component {
   state = {
     users: this.props.users,
-    filterText: '',
+    filterText: "",
   };
 
   onChange = (e) => {
     e.preventDefault();
 
     this.setState({
-      filterText: e.target.value
+      filterText: e.target.value,
     });
-  
   };
   updateData = (value) => {
     this.setState({ filterText: value });
@@ -31,7 +30,11 @@ class UsersList extends Component {
 
     return (
       <div>
-        <Filter onChange={this.onChange} filterText={this.state.filterText} count={newList.length} />
+        <Filter
+          onChange={this.onChange}
+          filterText={this.state.filterText}
+          count={newList.length}
+        />
         <ul className="users">
           {newList.map((user) => (
             <User key={user.id} {...user} />
