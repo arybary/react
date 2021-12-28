@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Filter extends Component {
   state = {
-    filterText: "",
+    filterText: this.props.filterText,
   };
 
   onFilterChange = (e) => {
