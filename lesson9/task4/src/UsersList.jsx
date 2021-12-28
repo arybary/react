@@ -4,8 +4,10 @@ import Filter from "./Filter.jsx";
 
 class UsersList extends Component {
   state = {
-    filterText: ""
+    users: this.props.users   
   };
+
+
   updateData = (value) => {
     this.setState({ filterText: value});
   };
@@ -14,7 +16,7 @@ class UsersList extends Component {
     console.log(this.state.filterText);
     let newList;
     newList =
-      this.state.filterText===''
+      !this.state.filterText
         ? this.props.users
         : this.props.users.filter(
             (user) => user.name === this.state.filterText
