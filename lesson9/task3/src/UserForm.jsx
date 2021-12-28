@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 
 class UserForm extends Component {
-  onSubmit = (e) => {
+  handleSubmit = (e) => {
     e.preventDefault();
     const formDate = [...new FormData(this.formRef)].reduce(
       (acc, [name, value]) => ({ ...acc, [name]: value }),
       {}
     );
-    this.props.createUser(formDate);
+    this.props.onSubmit(formDate);
   };
   setRef = (node) => {
     this.formRef = node;
@@ -15,7 +15,7 @@ class UserForm extends Component {
 
   render() {
     return (
-      <form ref={this.setRef} className="login-form" onSubmit={this.onSubmit}>
+      <form ref={this.setRef} className="login-form" onSubmit={this.handleSubmit}>
         <h1 className="form-title">Profile</h1>
         <div className="form-control">
           <label className="form-label" htmlFor="name">
