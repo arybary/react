@@ -15,9 +15,7 @@ class UsersList extends Component {
       filterText: e.target.value,
     });
   };
-  updateData = (value) => {
-    this.setState({ filterText: value });
-  };
+
 
   render() {
     console.log(this.state.filterText);
