@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ProductRow from "./ProductRow ";
+import ProductRow from "./ProductRow";
 import ProductCategoryRow from "./ProductCategoryRow";
 
 const ProductTable = ({products, filterText, inStockOnly }) => {
