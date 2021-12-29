@@ -1,38 +1,22 @@
-import React, { Component } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronUp, faChevronDown} from '@fortawesome/free-solid-svg-icons'
-import PropTypes from "prop-types";
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
-class Expand extends Component {
-  state = {
-    isOpen: false,    
-  };
-  showDialog = () => {
-    this.setState({ isOpen: !this.state.isOpen });
-  };
-render(){
+const Expand = ({ children, title, isContent, toggleContent }) => {
+  let status = !isContent
+    ? { content: null, chevron: faChevronDown }
+    : { content: children, chevron: faChevronUp };
   return (
     <div className="expand border">
-    <div className="expand__header">
-      <span className="expand__title">{this.props.title}</span>
-      <button className="expand__toggle-btn" onClick={this.showDialog}>
-      <FontAwesomeIcon icon={!this.state.isOpen ? faChevronDown : faChevronUp} />
-      </button>
+      <div className="expand__header">
+        <span className="expand__title">{title}</span>
+        <button className="expand__toggle-btn" onClick={toggleContent}>
+          <FontAwesomeIcon icon={status.chevron} />
+        </button>
+      </div>
+      <div className="expand__content">{status.content}</div>
     </div>
-    <div className="expand__content">
-      {!this.state.isOpen ? null : this.props.children}
-    </div>
-  </div>
   );
-};}
-Expand.propTypes = {
-  
-  children: PropTypes.element.isRequired,
-  title: PropTypes.string  
 };
 
-Expand.defaultProps = {
- 
-  title: "",
-};
 export default Expand;
