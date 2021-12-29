@@ -1,17 +1,15 @@
 import React from "react";
 
-const Dialog = (props) => {
+const Dialog = ({isOpen,children,title,onClose}) => {
+  if (!isOpen){return null;}
   return (
-    <div class="dialog">
-      <div class="dialog__heading">
-        <h4 class="dialog__title">Recommendation</h4>
-        <button class="dialog__close-btn">+</button>
+    <div className="dialog">
+      <div className="dialog__heading">
+        <h4 className="dialog__title">{title}</h4>
+        <button className="dialog__close-btn" onClick={onClose}>+</button>
       </div>
-      <div class="dialog__content">
-        <p>
-          Use immutable array methods to work with data. It will help to avoid
-          bugs
-        </p>
+      <div className="dialog__content">
+      {children}
       </div>
     </div>
   );
