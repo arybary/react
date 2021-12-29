@@ -5,8 +5,7 @@ import PropTypes from "prop-types";
 
 class Expand extends Component {
   state = {
-    isOpen: false,
-    chevron: faChevronUp
+    isOpen: false,    
   };
   showDialog = () => {
     this.setState({ isOpen: !this.state.isOpen });
@@ -21,7 +20,7 @@ render(){
       </button>
     </div>
     <div className="expand__content">
-      {!this.state.isOpen ? '' : this.props.children}
+      {!this.state.isOpen ? null : this.props.children}
     </div>
   </div>
   );
