@@ -2,9 +2,9 @@ import React from "react";
 
 
 const Expand = ({ children, title, isContent, toggleContent }) => {
-  let status = !isContent
-    ? { content: null, chevron: "fas fa-chevron-down" }
-    : { content: children, chevron: "fas fa-chevron-up" };
+  let status = isContent
+    ? { content: children, chevron: "fas fa-chevron-up" }
+    : { content: '', chevron: "fas fa-chevron-down" };
   return (
     <div className="expand border">
       <div className="expand__header">
