@@ -32,9 +32,10 @@ class TasksList extends Component {
     createTask(newTask).then(() => this.fetchList());
   };
 
-  handleTaskStatusChange = (id) => {
-    const { text, done } = this.state.tasks.find((task) => task.id);
+  handleTaskStatusChange = (id,done) => {
+    
     const updatedTask = { done: !done };
+    console.log(updatedTask, id)
     updateTask(id, updatedTask).then(() => this.fetchList());
   };
 

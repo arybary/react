@@ -9,8 +9,8 @@ const Task = ({ id, text, done, onChange, onDelete }) => {
         type="checkbox"
         className="list-item__checkbox"
         defaultChecked={done}
-        onChange={() => onChange(id)}
-      />{" "}
+        onChange={() => onChange(id,done)}
+      />
       <span className="list-item__text">{text}</span>
       <button
         className="list-item__delete-btn"

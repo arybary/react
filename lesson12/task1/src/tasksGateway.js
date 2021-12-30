@@ -23,7 +23,7 @@ export const fetchTasksList = () => {
 };
 
 export const updateTask = (taskId, taskData) => {
-  return fetch(`${baseUrl}/${taskId}`, {
+  return fetch(`${baseUrl}/${+taskId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
