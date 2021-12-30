@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import CreateTaskInput from "./CreateTaskInput";
 import TasksList from "./TasksList";
 
 class TodoList extends Component {
@@ -25,17 +26,7 @@ class TodoList extends Component {
       <>
         <h1 className="title">Todo List</h1>
         <main className="todo-list">
-          <div className="create-task">
-            <input
-              className="create-task__input"
-              onChange={this.handleChange}
-              type="text"
-              value={this.state.task}
-            />
-            <button className="btn create-task__btn" onClick={this.createTasks}>
-              Create
-            </button>
-          </div>
+          <CreateTaskInput />
           <TasksList />
         </main>
       </>
