@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import Task from "./Task";
 import CreateTaskInput from "./CreateTaskInput";
+import {
+  createTask,
+  deleteTask,
+  fetchTasksList,
+  updateTask,
+} from "./tasksGateway";
 
 const baseUrl = "https://61cdc8267067f600179c5c46.mockapi.io/tasks";
 
@@ -10,67 +16,30 @@ class TasksList extends Component {
   };
 
   componentDidMount() {
-    this.fetchTasksList();
+    this.fetchList();
   }
 
-  fetchTasksList = () => {
-    fetch(baseUrl)
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
+  fetchList = () => {
+    fetchTasksList().then((data) =>
+      this.setState({
+        tasks: data,
       })
-      .then((data) =>
-        this.setState({
-          tasks: data,
-        })
-      );
+    );
   };
 
   onCreate = (text) => {
-    fetch(baseUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify({ text, done: false }),
-    }).then((respone) => {
-      if (respone.ok) {
-        this.fetchTasksList();
-      } else {
-        throw new Error("HEXYSI");
-      }
-    });
+    const newTask = { text, done: false };
+    createTask(newTask).then(() => this.fetchList());
   };
 
   handleTaskStatusChange = (id) => {
-    const {  done } = this.state.tasks.find((task) => task.id);
-   const updateTask={ done: !done }
-    fetch(baseUrl + `/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(updateTask),
-    }).then((respone) => {
-      if (respone.ok) {
-        this.fetchTasksList();
-      } else {
-        throw new Error("HEXYSI");
-      }
-    });
+    const { text, done } = this.state.tasks.find((task) => task.id);
+    const updatedTask = { done: !done };
+    updateTask(id, updatedTask).then(() => this.fetchList());
   };
 
   handleTaskDelete = (id) => {
-    fetch(baseUrl + `/${id}`, {
-      method: "DELETE",
-    }).then((respone) => {
-      if (respone.ok) {
-        this.fetchTasksList();
-      } else {
-        throw new Error("HEXYSI del");
-      }
-    });
+    deleteTask(id).then(() => this.fetchList());
   };
 
   render() {
