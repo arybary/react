@@ -1,7 +1,9 @@
 import React from "react";
+import classNames from "classnames"
+import PropTypes from "prop-types";
 
 const Task = ({ text, done }) => {
-  const listItemClasses = `list-item ${done ? "list-item_done" : ""}`;
+  const listItemClasses = classNames("list-item", {"list-item_done" : done});
   return (
     <li className={listItemClasses}>
       <input
@@ -14,4 +16,10 @@ const Task = ({ text, done }) => {
     </li>
   );
 };
+Task.propTypes = {
+    text: PropTypes.string.isRequired,
+    done: PropTypes.bool.isRequired,
+   };
+  
+
 export default Task;
