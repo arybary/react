@@ -12,6 +12,9 @@ const Dimensions = () => {
       setDimensions({ width: innerWidth, height: innerHeight });
     };
     window.addEventListener("resize", onResize);
+    return () => {
+      window.removeEventListener("resize", onResize);
+    };
   }, []);
   const { width, height } = dimensions;
   return <div className="dimensions">{`${width}px - ${height}px`}</div>;
