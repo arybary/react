@@ -19,7 +19,7 @@ const Clock = ({ offset, location }) => {
     return () => {
       clearInterval(interval);
     };
-  });
+  },[]);
 
   return (
     <div className="clock">
