@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
 import Day from "../day/Day";
 
 import "./week.scss";
 
-const Week = ({ weekDates, events }) => {
+const Week = ({ weekDates, events, onDelete }) => {
+  const[line,setLine]=useState({id:0,
+    title:'',
+    description:'',
+    dateFrom: new Date(),
+    dateTo: new Date(),})
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setLine({id:0,
+          title:'',
+          description:'',
+          dateFrom: new Date(),
+          dateTo: new Date(),});
+      }, 60000);
+      return () => {
+        clearInterval(interval);
+      };
+    },[]);
+   const newEvents=[...events,line]
   return (
     <div className="calendar__week">
       {weekDates.map((dayStart) => {
@@ -12,7 +30,7 @@ const Week = ({ weekDates, events }) => {
         );
 
         //getting all events from the day we will render
-        const dayEvents = events.filter(
+        const dayEvents = newEvents.filter(
           (event) => event.dateFrom > dayStart && event.dateTo < dayEnd
         );
 
@@ -21,6 +39,7 @@ const Week = ({ weekDates, events }) => {
             key={dayStart.getDate()}
             dataDay={dayStart.getDate()}
             dayEvents={dayEvents}
+            onDelete={onDelete}
           />
         );
       })}
