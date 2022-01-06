@@ -32,15 +32,33 @@ const App = () => {
     fetchList();
   }, []);
 
+  const [visibility, setVisibility] = useState(false);
+
+  const popup = (vis) => {
+    setVisibility(vis);
+  };
+
   const weekDates = generateWeekRange(getWeekStartDate(weekStartDate));
+  const newTasks = events.map((e) => {
+    const { id, title, date, startTime, endTime, description } = e;
+    return {
+      id,
+      title,
+      description,
+      dateFrom: new Date(`${date} ${startTime}`),
+      dateTo: new Date(`${date} ${endTime}`),
+    };
+  });
 
   return (
     <>
-      <Header today={weekStartDate} toggleWeek={toggleWeek} onCreate={onCreate}/>
+      <Header today={weekStartDate} toggleWeek={toggleWeek} onCreate={onCreate} visibility={visibility} popup={popup} weekDates={weekDates} events={newTasks} />
       <Calendar
         weekDates={weekDates}
-        events={events}
+        events={newTasks}
         onDelete={handleTaskDelete}
+        onCreate={onCreate}
+      
       />
     </>
   );

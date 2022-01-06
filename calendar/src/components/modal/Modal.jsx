@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { createTask, fetchTasksList } from "../../gateway/events";
 
 import "./modal.scss";
 
-const Modal = ({ show, onClose,onCreate }) => {
+const Modal = ({
+  onClose,
+  onCreate,
+  dateClick,
+  timeStart,
+  timeEnd,
+  events,
+}) => {
   const [task, setTask] = useState({
     title: "",
-    date: "",
-    startTime: "",
-    endTime: "",
+    date: dateClick,
+    startTime: timeStart,
+    endTime: timeEnd,
     description: "",
   });
 
@@ -17,6 +23,34 @@ const Modal = ({ show, onClose,onCreate }) => {
 
     setTask({ ...task, [name]: value });
   };
+  const { id, title, date, startTime, endTime, description } = task;
+  const newTask = {
+    id,
+    title,
+    description,
+    dateFrom: new Date(`${date} ${startTime}`),
+    dateTo: new Date(`${date} ${endTime}`),
+  };
+  const intervalTask =
+    (Date.parse(newTask.dateTo) - Date.parse(newTask.dateFrom)) /
+    (60 * 60 * 1000);
+
+  const originalTime =
+    events === []
+      ? true
+      : events.every((el) => {
+          return (
+            Date.parse(newTask.dateTo) < Date.parse(el.dateFrom) ||
+            Date.parse(newTask.dateFrom) > Date.parse(el.dateTo)
+          );
+        });
+  const trueIntervalTask =
+    intervalTask > 0 && intervalTask < 6 && originalTime && title !== "";
+
+  const createNewTask = (task) => {
+    onCreate(task);
+    onClose(false);
+  };
 
   return (
     <div className="modal overlay">
@@ -24,7 +58,7 @@ const Modal = ({ show, onClose,onCreate }) => {
         <div className="create-event">
           <button
             className="create-event__close-btn"
-            onClick={() => onClose(false)}
+            onClick={(e) => onClose(false, e)}
           >
             +
           </button>
@@ -74,9 +108,11 @@ const Modal = ({ show, onClose,onCreate }) => {
               onClick={(e) => {
                 e.preventDefault();
 
-                onCreate(task);
-                onClose(false);
-               
+                trueIntervalTask
+                  ? createNewTask(task)
+                  : alert(
+                      "DATA error:not an empty title, interval maximum 6 hours, original interval"
+                    );
               }}
             >
               Create

@@ -1,28 +1,40 @@
-import React, { useState } from "react";
-
+import React from "react";
+import moment from "moment";
 import { months } from "../../utils/dateUtils.js";
 import Modal from "../modal/Modal.jsx";
 
 import "./header.scss";
 
-const Header = ({ today, toggleWeek, onCreate }) => {
-  const [visibility, setVisibility] = useState(false);
-
-  const popupClose = (e) => {
-    setVisibility(e);
-  };
+const Header = ({
+  today,
+  toggleWeek,
+  onCreate,
+  popup,
+  visibility,
+  weekDates,
+  events,
+}) => {
+  const week = weekDates.map((dayDate) => dayDate.getMonth());
+  const oneMonth = week[0] === week[6];
 
   return (
     <header className="header">
       <button
         className="button create-event-btn"
-        onClick={() => {
-          setVisibility(!visibility);
-        }}
+        onClick={() => popup(!visibility)}
       >
         <i className="fas fa-plus create-event-btn__icon"></i>Create
       </button>
-      {!visibility ? null : <Modal show={visibility} onClose={popupClose} onCreate={onCreate} />}
+      {!visibility ? null : (
+        <Modal
+          events={events}
+          dateClick={moment(new Date()).format("YYYY-MM-DD")}
+          onClose={popup}
+          onCreate={onCreate}
+          timeStart={moment(new Date()).format("H:mm")}
+          timeEnd=""
+        />
+      )}
       <div className="navigation">
         <button
           className="navigation__today-btn button"
@@ -43,7 +55,7 @@ const Header = ({ today, toggleWeek, onCreate }) => {
           <i className="fas fa-chevron-right"></i>
         </button>
         <span className="navigation__displayed-month">
-          {months[today.getMonth()]}
+          {oneMonth ? months[week[0]] : `${months[week[0]]}-${months[week[6]]}`}
         </span>
       </div>
     </header>

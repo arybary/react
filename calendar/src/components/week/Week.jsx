@@ -1,27 +1,31 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Day from "../day/Day";
 
 import "./week.scss";
 
-const Week = ({ weekDates, events, onDelete }) => {
-  const[line,setLine]=useState({id:0,
-    title:'',
-    description:'',
+const Week = ({ weekDates, events, onDelete,onCreate }) => {
+  const [line, setLine] = useState({
+    id: 0,
+    title: "",
+    description: "",
     dateFrom: new Date(),
-    dateTo: new Date(),})
-    useEffect(() => {
-      const interval = setInterval(() => {
-        setLine({id:0,
-          title:'',
-          description:'',
-          dateFrom: new Date(),
-          dateTo: new Date(),});
-      }, 60000);
-      return () => {
-        clearInterval(interval);
-      };
-    },[]);
-   const newEvents=[...events,line]
+    dateTo: new Date(),
+  });
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLine({
+        id: 0,
+        title: "",
+        description: "",
+        dateFrom: new Date(),
+        dateTo: new Date(),
+      });
+    }, 60000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+  const newEvents = [...events, line];
   return (
     <div className="calendar__week">
       {weekDates.map((dayStart) => {
@@ -38,8 +42,11 @@ const Week = ({ weekDates, events, onDelete }) => {
           <Day
             key={dayStart.getDate()}
             dataDay={dayStart.getDate()}
+            dateClick={dayStart}
             dayEvents={dayEvents}
             onDelete={onDelete}
+            onCreate={onCreate}
+            events={events}
           />
         );
       })}
