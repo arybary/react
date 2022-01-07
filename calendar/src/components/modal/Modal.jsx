@@ -51,14 +51,6 @@ const Modal = ({
     onCreate(task);
     onClose(false);
   };
-  const timeFivteen = (time) => {
-    const arrTime = time.split(":");
-    const minute = Math.round(+arrTime[1] / 15) * 15;
-    const minuteFiv = minute < 10 ? `0${minute}` : minute;
-    const timeFiv =
-      minute === 60 ? `${+arrTime[0] + 1}:00` : `${arrTime[0]}:${minuteFiv}`;
-    return timeFiv;
-  };
 
   return (
     <div className="modal overlay">
@@ -92,7 +84,7 @@ const Modal = ({
                 name="startTime"
                 className="event-form__field"
                 onChange={handleChange}
-                value={timeFivteen(task.startTime)}
+                value={task.startTime}
               />
               <span>-</span>
               <input
@@ -100,7 +92,7 @@ const Modal = ({
                 name="endTime"
                 className="event-form__field"
                 onChange={handleChange}
-                value={timeFivteen(task.endTime)}
+                value={task.endTime}
               />
             </div>
             <textarea
@@ -135,7 +127,7 @@ const Modal = ({
 Modal.propTypes = {
   timeStart: PropTypes.string.isRequired,
   timeEnd: PropTypes.string.isRequired,
-  dateClick: PropTypes.object.isRequired,
+  dateClick: PropTypes.string.isRequired,
   events: PropTypes.array.isRequired,
   onCreate: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,

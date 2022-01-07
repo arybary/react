@@ -1,3 +1,11 @@
+export const timeFivteen = (time) => {
+  const arrTime = time.split(":");
+  const minute = Math.round(+arrTime[1] / 15) * 15;
+  const minuteFiv = minute < 10 ? `0${minute}` : minute;
+  const timeFiv =
+    minute === 60 ? `${+arrTime[0] + 1}:00` : `${arrTime[0]}:${minuteFiv}`;
+  return timeFiv;
+};
 export const getWeekStartDate = (date) => {
   const dateCopy = new Date(date);
   const dayOfWeek = dateCopy.getDay();

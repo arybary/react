@@ -5,7 +5,7 @@ import "./week.scss";
 
 const Week = ({ weekDates, events, onDelete, onCreate }) => {
   const [line, setLine] = useState({
-    id: 0,
+    id: "0",
     title: "",
     description: "",
     dateFrom: new Date(),
@@ -14,9 +14,9 @@ const Week = ({ weekDates, events, onDelete, onCreate }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setLine({
-        id: "0",
-        title: "",
-        description: "",
+        id,
+        title,
+        description,
         dateFrom: new Date(),
         dateTo: new Date(),
       });

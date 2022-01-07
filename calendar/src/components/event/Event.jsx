@@ -21,7 +21,7 @@ const Event = ({
 
   return (
     <>
-      {id === 0 ? (
+      {id === "0" ? (
         <div style={eventStyle} className="red-line"></div>
       ) : (
         <div
