@@ -1,11 +1,13 @@
-import React, {useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./components/header/Header.jsx";
 import Calendar from "./components/calendar/Calendar.jsx";
-
 import { getWeekStartDate, generateWeekRange } from "../src/utils/dateUtils.js";
-
 import "./common.scss";
-import { createTask, deleteTask, fetchTasksList } from "../../lesson12/task1/src/tasksGateway.js";
+import {
+  createTask,
+  deleteTask,
+  fetchTasksList,
+} from "../../lesson12/task1/src/tasksGateway.js";
 
 const App = () => {
   const [weekStartDate, setWeekStart] = useState(new Date()),
@@ -22,7 +24,7 @@ const App = () => {
       setEvents(data);
     });
   };
- const onCreate = (newTask) => {
+  const onCreate = (newTask) => {
     createTask(newTask).then(() => fetchList());
   };
   const handleTaskDelete = (id) => {
@@ -52,13 +54,20 @@ const App = () => {
 
   return (
     <>
-      <Header today={weekStartDate} toggleWeek={toggleWeek} onCreate={onCreate} visibility={visibility} popup={popup} weekDates={weekDates} events={newTasks} />
+      <Header
+        today={weekStartDate}
+        toggleWeek={toggleWeek}
+        onCreate={onCreate}
+        visibility={visibility}
+        popup={popup}
+        weekDates={weekDates}
+        events={newTasks}
+      />
       <Calendar
         weekDates={weekDates}
         events={newTasks}
         onDelete={handleTaskDelete}
         onCreate={onCreate}
-      
       />
     </>
   );

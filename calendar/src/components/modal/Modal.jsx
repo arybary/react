@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 import "./modal.scss";
 
 const Modal = ({
@@ -51,6 +51,14 @@ const Modal = ({
     onCreate(task);
     onClose(false);
   };
+  const timeFivteen = (time) => {
+    const arrTime = time.split(":");
+    const minute = Math.round(+arrTime[1] / 15) * 15;
+    const minuteFiv = minute < 10 ? `0${minute}` : minute;
+    const timeFiv =
+      minute === 60 ? `${+arrTime[0] + 1}:00` : `${arrTime[0]}:${minuteFiv}`;
+    return timeFiv;
+  };
 
   return (
     <div className="modal overlay">
@@ -84,7 +92,7 @@ const Modal = ({
                 name="startTime"
                 className="event-form__field"
                 onChange={handleChange}
-                value={task.startTime}
+                value={timeFivteen(task.startTime)}
               />
               <span>-</span>
               <input
@@ -92,7 +100,7 @@ const Modal = ({
                 name="endTime"
                 className="event-form__field"
                 onChange={handleChange}
-                value={task.endTime}
+                value={timeFivteen(task.endTime)}
               />
             </div>
             <textarea
@@ -122,6 +130,15 @@ const Modal = ({
       </div>
     </div>
   );
+};
+
+Modal.propTypes = {
+  timeStart: PropTypes.string.isRequired,
+  timeEnd: PropTypes.string.isRequired,
+  dateClick: PropTypes.object.isRequired,
+  events: PropTypes.array.isRequired,
+  onCreate: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default Modal;

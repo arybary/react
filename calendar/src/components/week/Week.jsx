@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Day from "../day/Day";
-
+import PropTypes from "prop-types";
 import "./week.scss";
 
-const Week = ({ weekDates, events, onDelete,onCreate }) => {
+const Week = ({ weekDates, events, onDelete, onCreate }) => {
   const [line, setLine] = useState({
     id: 0,
     title: "",
@@ -14,7 +14,7 @@ const Week = ({ weekDates, events, onDelete,onCreate }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setLine({
-        id: 0,
+        id: "0",
         title: "",
         description: "",
         dateFrom: new Date(),
@@ -52,6 +52,13 @@ const Week = ({ weekDates, events, onDelete,onCreate }) => {
       })}
     </div>
   );
+};
+
+Week.propTypes = {
+  events: PropTypes.array.isRequired,
+  weekDates: PropTypes.array.isRequired,
+  onCreate: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default Week;

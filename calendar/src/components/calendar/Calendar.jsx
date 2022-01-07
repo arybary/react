@@ -2,10 +2,11 @@ import React from "react";
 import Navigation from "./../navigation/Navigation";
 import Week from "../week/Week";
 import Sidebar from "../sidebar/Sidebar";
-
 import "./calendar.scss";
+import PropTypes from "prop-types";
 
 const Calendar = ({ weekDates, events, onDelete, onCreate }) => {
+ 
   return (
     <section className="calendar">
       <Navigation weekDates={weekDates} />
@@ -22,6 +23,13 @@ const Calendar = ({ weekDates, events, onDelete, onCreate }) => {
       </div>
     </section>
   );
+};
+
+Calendar.propTypes = {
+  events: PropTypes.array.isRequired,
+  weekDates: PropTypes.array.isRequired,
+  onCreate: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default Calendar;

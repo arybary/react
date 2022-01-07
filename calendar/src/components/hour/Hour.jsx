@@ -1,15 +1,24 @@
 import React, { useState } from "react";
 import moment from "moment";
+import PropTypes from "prop-types";
 import Event from "../event/Event";
 import { formatMins } from "../../../src/utils/dateUtils.js";
 import Modal from "../modal/Modal";
 
-const Hour = ({ dataHour, hourEvents, onDelete, onCreate,dateClick,events }) => {
+const Hour = ({
+  dataHour,
+  hourEvents,
+  onDelete,
+  onCreate,
+  dateClick,
+  events,
+}) => {
   const [visibility, setVisibility] = useState(false);
 
   const popup = (vis) => {
     setVisibility(vis);
   };
+  
   return (
     <div
       className="calendar__time-slot"
@@ -24,7 +33,7 @@ const Hour = ({ dataHour, hourEvents, onDelete, onCreate,dateClick,events }) => 
           onCreate={onCreate}
           dateClick={moment(dateClick).format("YYYY-MM-DD")}
           timeStart={dataHour < 10 ? `0${dataHour}:00` : `${dataHour}:00`}
-          timeEnd={dataHour < 9 ? `0${dataHour+1}:00` : `${dataHour+1}:00`}
+          timeEnd={dataHour < 9 ? `0${dataHour + 1}:00` : `${dataHour + 1}:00`}
           events={events}
         />
       )}
@@ -52,6 +61,15 @@ const Hour = ({ dataHour, hourEvents, onDelete, onCreate,dateClick,events }) => 
       })}
     </div>
   );
+};
+
+Hour.propTypes = {
+  dataHour: PropTypes.number.isRequired,
+  hourEvents: PropTypes.array.isRequired,
+  dateClick: PropTypes.object.isRequired,
+  events: PropTypes.array.isRequired,
+  onCreate: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default Hour;
