@@ -3,7 +3,13 @@ export const timeFivteen = (time) => {
   const minute = Math.round(+arrTime[1] / 15) * 15;
   const minuteFiv = minute < 10 ? `0${minute}` : minute;
   const timeFiv =
-    minute === 60 ? `${+arrTime[0] + 1}:00` : `${arrTime[0]}:${minuteFiv}`;
+    minute === 60
+      ? +arrTime[0] + 1 === 24
+        ? "23:59"
+        : `${arrTime[0] + 1}:00`
+      : +arrTime[0] === 0
+      ? "00:01"
+      : `${arrTime[0]}:${minuteFiv}`;
   return timeFiv;
 };
 export const getWeekStartDate = (date) => {

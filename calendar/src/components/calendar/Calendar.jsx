@@ -6,7 +6,6 @@ import "./calendar.scss";
 import PropTypes from "prop-types";
 
 const Calendar = ({ weekDates, events, onDelete, onCreate }) => {
- 
   return (
     <section className="calendar">
       <Navigation weekDates={weekDates} />

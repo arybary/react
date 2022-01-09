@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./modal.scss";
+import { timeFivteen } from "../../utils/dateUtils";
 
 const Modal = ({
   onClose,
@@ -13,8 +14,8 @@ const Modal = ({
   const [task, setTask] = useState({
     title: "",
     date: dateClick,
-    startTime: timeStart,
-    endTime: timeEnd,
+    startTime: timeFivteen(timeStart),
+    endTime: timeFivteen(timeEnd),
     description: "",
   });
 
@@ -31,6 +32,7 @@ const Modal = ({
     dateFrom: new Date(`${date} ${startTime}`),
     dateTo: new Date(`${date} ${endTime}`),
   };
+
   const intervalTask =
     (Date.parse(newTask.dateTo) - Date.parse(newTask.dateFrom)) /
     (60 * 60 * 1000);
@@ -45,9 +47,27 @@ const Modal = ({
           );
         });
   const trueIntervalTask =
-    intervalTask > 0 && intervalTask < 6 && originalTime && title !== "";
+    intervalTask > 0 && originalTime && intervalTask < 6 && title !== "";
+
+  const dataError = () => {
+    const errorOriginal = !originalTime
+      ? "Два события не могут пересекаться по времени "
+      : "";
+    const errorOneDay =
+      intervalTask > 0
+        ? ""
+        : "Событие должно начаться и закончиться в пределах одного дня ";
+    const errorMaxInterval =
+      intervalTask < 6 ? "" : "Одно событие не может быть дольше 6 часов ";
+    const notTitle = title !== "" ? "" : "Заполни заголовок ";
+    return alert(notTitle + errorOriginal + errorOneDay + errorMaxInterval);
+  };
 
   const createNewTask = (task) => {
+    const time =
+      Date.parse(newTask.dateTo) < Date.parse(new Date())
+        ? alert("создаеться завершенное событие")
+        : null;
     onCreate(task);
     onClose(false);
   };
@@ -108,11 +128,7 @@ const Modal = ({
               onClick={(e) => {
                 e.preventDefault();
 
-                trueIntervalTask
-                  ? createNewTask(task)
-                  : alert(
-                      "DATA error:not an empty title, interval maximum 6 hours, original interval"
-                    );
+                trueIntervalTask ? createNewTask(task) : dataError();
               }}
             >
               Create

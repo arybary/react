@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Header from "./components/header/Header.jsx";
 import Calendar from "./components/calendar/Calendar.jsx";
-import { getWeekStartDate, generateWeekRange, timeFivteen } from "../src/utils/dateUtils.js";
+import {
+  getWeekStartDate,
+  generateWeekRange,
+  timeFivteen,
+} from "../src/utils/dateUtils.js";
 import "./common.scss";
 import {
   createTask,
   deleteTask,
   fetchTasksList,
-} from "../../lesson12/task1/src/tasksGateway.js";
+} from "../src/gateway/events.js";
 
 const App = () => {
   const [weekStartDate, setWeekStart] = useState(new Date()),

@@ -32,7 +32,7 @@ const Header = ({
           onClose={popup}
           onCreate={onCreate}
           timeStart={moment(new Date()).format("H:mm")}
-          timeEnd=""
+          timeEnd={moment(new Date()).format("H:mm")}
         />
       )}
       <div className="navigation">

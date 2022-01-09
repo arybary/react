@@ -31,5 +31,3 @@ export const deleteTask = (taskId) => {
     }
   });
 };
-
-export default events;
