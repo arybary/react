@@ -11,7 +11,8 @@ const createUser = (user) =>
 
 const inputElem = document.querySelector("form");
 
-const onCreateUser = () => {
+const onCreateUser = (event) => {
+  event.preventDefault();
   const userObj = Object.fromEntries(new FormData(inputElem));
 
   return createUser(userObj)
@@ -19,7 +20,8 @@ const onCreateUser = () => {
       return respone.json();
     })
     .then((res) => {
-      return alert(JSON.stringify(res));
+      alert(JSON.stringify(res));
+      inputElem.reset();
     });
 };
 
