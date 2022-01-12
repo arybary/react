@@ -25,10 +25,11 @@ const onCreateUser = (event) => {
 const clickButton = document.querySelector(".submit-button");
 
 const onInputChange = () => {
-  const isValidForm = inputElem.reportValidity();
-  isValidForm
-    ? clickButton.removeAttribute("disabled")
-    : clickButton.setAttribute("disabled", true);
+  if (inputElem.reportValidity()) {
+    submitButtonElem.removeAttribute("disabled");
+  } else {
+    submitButtonElem.setAttribute("disabled", true);
+  }
 };
 
 inputElem.addEventListener("input", onInputChange);
