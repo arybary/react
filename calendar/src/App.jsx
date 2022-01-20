@@ -14,14 +14,15 @@ import {
 } from "../src/gateway/events.js";
 
 const App = () => {
-  const [weekStartDate, setWeekStart] = useState(new Date()),
-    toggleWeek = (date, day) => {
-      const result = new Date(date);
-      result.setDate(result.getDate() + day);
-      return setWeekStart(result);
-    };
-
+  const [weekStartDate, setWeekStart] = useState(new Date());
   const [events, setEvents] = useState([]);
+  const [visibility, setVisibility] = useState(false);
+
+  const toggleWeek = (date, day) => {
+    const result = new Date(date);
+    result.setDate(result.getDate() + day);
+    return setWeekStart(result);
+  };
 
   const fetchList = () => {
     fetchTasksList().then((data) => {
@@ -37,8 +38,6 @@ const App = () => {
   useEffect(() => {
     fetchList();
   }, []);
-
-  const [visibility, setVisibility] = useState(false);
 
   const popup = (vis) => {
     setVisibility(vis);

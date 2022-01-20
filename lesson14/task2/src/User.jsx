@@ -16,7 +16,7 @@ const User = () => {
       .then((userData) => {
         setUserData(userData);
       });
-  }, [userId]);
+  }, []);
 
   if (!userData) {
     return null;

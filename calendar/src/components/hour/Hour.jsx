@@ -18,22 +18,24 @@ const Hour = ({
   const popup = (vis) => {
     setVisibility(vis);
   };
-  
+  const timeStart = dataHour < 10 ? `0${dataHour}:00` : `${dataHour}:00`;
+  const timeEnd = dataHour < 9 ? `0${dataHour + 1}:00` : `${dataHour + 1}:00`;
+
   return (
     <div
       className="calendar__time-slot"
       data-time={dataHour + 1}
       onClick={(e) => {
-        e.target.dataset.time ? popup(true) : null;
+        e.target.dataset.time && popup(true);
       }}
     >
-      {!visibility ? null : (
+      {visibility && (
         <Modal
           onClose={popup}
           onCreate={onCreate}
           dateClick={moment(dateClick).format("YYYY-MM-DD")}
-          timeStart={dataHour < 10 ? `0${dataHour}:00` : `${dataHour}:00`}
-          timeEnd={dataHour < 9 ? `0${dataHour + 1}:00` : `${dataHour + 1}:00`}
+          timeStart={timeStart}
+          timeEnd={timeEnd}
           events={events}
         />
       )}
@@ -44,7 +46,8 @@ const Hour = ({
         const eventEnd = `${dateTo.getHours()}:${formatMins(
           dateTo.getMinutes()
         )}`;
-        const minutePredel = (dateFrom, (dateFrom - new Date()) / 60000);
+        const minuteBeforeEvent = (dateFrom - new Date()) / 60000;
+
         return (
           <Event
             key={id}
@@ -55,7 +58,7 @@ const Hour = ({
             title={title}
             id={id}
             onDelete={onDelete}
-            minutePredel={minutePredel}
+            minuteBeforeEvent={minuteBeforeEvent}
           />
         );
       })}

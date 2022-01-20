@@ -4,28 +4,6 @@ import PropTypes from "prop-types";
 import "./week.scss";
 
 const Week = ({ weekDates, events, onDelete, onCreate }) => {
-  const [line, setLine] = useState({
-    id:0,
-    title: " ",
-    description: " ",
-    dateFrom: new Date(),
-    dateTo: new Date(),
-  });
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setLine({
-        id:0,
-        ttitle: " ",
-        description: " ",
-        dateFrom: new Date(),
-        dateTo: new Date(),
-      });
-    }, 60000);
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
-  const newEvents = [...events, line];
   return (
     <div className="calendar__week">
       {weekDates.map((dayStart) => {
@@ -34,7 +12,7 @@ const Week = ({ weekDates, events, onDelete, onCreate }) => {
         );
 
         //getting all events from the day we will render
-        const dayEvents = newEvents.filter(
+        const dayEvents = events.filter(
           (event) => event.dateFrom > dayStart && event.dateTo < dayEnd
         );
 
