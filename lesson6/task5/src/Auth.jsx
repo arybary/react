@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import Spinner from "./Spinner.jsx";
-import Login from "./Login.jsx";
-import Logout from "./Logout.jsx";
+import React, { Component } from 'react';
+import Spinner from './Spinner.jsx';
+import Login from './Login.jsx';
+import Logout from './Logout.jsx';
 
 class Auth extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class Auth extends Component {
     };
   }
 
-  onLogin = () => {
+  Login = () => {
     this.setState({
       processing: false,
     });
