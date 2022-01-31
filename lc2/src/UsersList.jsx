@@ -26,7 +26,7 @@ class UsersList extends Component {
           totalItems={this.props.users.length}
           itemsPerPage={3}
         />
-        <ul class="users">
+        <ul className="users">
           {usersList.map(user => (
             <User key={user.id} {...user} />
           ))}
