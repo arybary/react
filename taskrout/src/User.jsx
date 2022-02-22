@@ -15,20 +15,12 @@ const User = ({ match }) => {
       );
   useEffect(() => {
     fetchInfo(match.params.userId);
-  }, []);
+  }, [match.params.userId]);
   console.log(dataUser);
-  const{
-    avatarUrl,
-    name,
-    location,
-  }=dataUser;
+  const { avatarUrl, name, location } = dataUser;
   return (
     <div className="user">
-      <img
-        alt="User Avatar"
-        src={avatarUrl}
-        className="user__avatar"
-      />
+      <img alt="User Avatar" src={avatarUrl} className="user__avatar" />
       <div className="user__info">
         <span className="user__name">{name}</span>
         <span className="user__location">{location}</span>
