@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
-const User = ({ match }) => {
-  console.log(match.params.userId);
+const User = () => {
   const [dataUser, setDataUser] = useState({ avatarUrl: null, name: null, location: null });
-  const fetchInfo = userId =>
-    fetch(`https://api.github.com/users/${userId}`)
-      .then(res => res.json())
-      .then(userInfo =>
-        setDataUser({
-          avatarUrl: userInfo.avatar_url,
-          name: userInfo.name,
-          location: userInfo.location,
-        }),
-      );
+  const { userId } = useParams();
+  const fetchUserInfo = async () => {
+    const responce = await fetch(`https://api.github.com/users/${userId}`);
+    const userInfo = await responce.json();
+    setDataUser({
+      avatarUrl: userInfo.avatar_url,
+      name: userInfo.name,
+      location: userInfo.location,
+    });
+  };
+
   useEffect(() => {
-    fetchInfo(match.params.userId);
-  }, [match.params.userId]);
-  console.log(dataUser);
+    fetchUserInfo();
+  }, [userId]);
+
   const { avatarUrl, name, location } = dataUser;
   return (
     <div className="user">
